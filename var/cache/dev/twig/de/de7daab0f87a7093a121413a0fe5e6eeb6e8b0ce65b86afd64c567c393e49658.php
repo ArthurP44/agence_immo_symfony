@@ -55,7 +55,7 @@ class __TwigTemplate_a8ea3bc7e55513c8919c3d2c3c7d73f93aed45923c5a6a726ef3f9f25aa
 
     }
 
-    // line 3
+    // line 2
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -65,7 +65,7 @@ class __TwigTemplate_a8ea3bc7e55513c8919c3d2c3c7d73f93aed45923c5a6a726ef3f9f25aa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "Tous nos biens";
+        echo "Gérer les biens";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
 
@@ -85,8 +85,82 @@ class __TwigTemplate_a8ea3bc7e55513c8919c3d2c3c7d73f93aed45923c5a6a726ef3f9f25aa
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 5
-        echo "    <div class =\"container mt-4\">
-        <h1>Voir tous nos biens</h1>
+        echo "
+    <h1>Gérer les biens</h1>
+
+    ";
+        // line 8
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 8, $this->source); })()), "flashes", [0 => "success"], "method", false, false, false, 8));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 9
+            echo "        <div class=\"alert alert-success\">
+            ";
+            // line 10
+            echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+            echo "
+        </div>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 13
+        echo "
+    <table class=\"table table-striped\">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        ";
+        // line 22
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["properties"]) || array_key_exists("properties", $context) ? $context["properties"] : (function () { throw new RuntimeError('Variable "properties" does not exist.', 22, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["property"]) {
+            // line 23
+            echo "            <tr>
+                <td>";
+            // line 24
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["property"], "title", [], "any", false, false, false, 24), "html", null, true);
+            echo "</td>
+                <td>
+                    <a href=\"";
+            // line 26
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin.property.edit", ["id" => twig_get_attribute($this->env, $this->source, $context["property"], "id", [], "any", false, false, false, 26)]), "html", null, true);
+            echo "\" class=\"btn btn-secondary\">Éditer</a>
+                    <form method=\"post\" action=\"";
+            // line 27
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin.property.delete", ["id" => twig_get_attribute($this->env, $this->source, $context["property"], "id", [], "any", false, false, false, 27)]), "html", null, true);
+            echo "\"
+                          style=\"display: inline-block\" onsubmit=\"return confirm('Êtes-vous vraiment sûr ?')\">
+                        <input type=\"hidden\" name=\"_method\" value=\"DELETE\">
+                        <input type=\"hidden\" name=\"_token\" value=\"";
+            // line 30
+            echo twig_escape_filter($this->env, $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderCsrfToken(("delete" . twig_get_attribute($this->env, $this->source, $context["property"], "id", [], "any", false, false, false, 30))), "html", null, true);
+            echo "\">
+                        <button class=\"btn btn-danger\">Supprimer</button>
+
+                    </form>
+                </td>
+            </tr>
+        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['property'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 37
+        echo "        </tbody>
+    </table>
+
+    <div class=\"text-right\">
+        <a href=\"";
+        // line 41
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("admin.property.new");
+        echo "\" class=\"btn btn-primary\">Créer un nouveau bien</a>
+    </div>
     </div>
 ";
         
@@ -109,18 +183,54 @@ class __TwigTemplate_a8ea3bc7e55513c8919c3d2c3c7d73f93aed45923c5a6a726ef3f9f25aa
 
     public function getDebugInfo()
     {
-        return array (  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  161 => 41,  155 => 37,  142 => 30,  136 => 27,  132 => 26,  127 => 24,  124 => 23,  120 => 22,  109 => 13,  100 => 10,  97 => 9,  93 => 8,  88 => 5,  78 => 4,  59 => 2,  36 => 1,);
     }
 
     public function getSourceContext()
     {
         return new Source("{% extends 'base.html.twig' %}
+{% block title \"Gérer les biens\" %}
 
-{%  block title \"Tous nos biens\" %}
-{%  block body %}
-    <div class =\"container mt-4\">
-        <h1>Voir tous nos biens</h1>
+{% block body %}
+
+    <h1>Gérer les biens</h1>
+
+    {% for message in app.flashes('success') %}
+        <div class=\"alert alert-success\">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <table class=\"table table-striped\">
+        <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for property in properties %}
+            <tr>
+                <td>{{ property.title }}</td>
+                <td>
+                    <a href=\"{{ path('admin.property.edit', {id: property.id}) }}\" class=\"btn btn-secondary\">Éditer</a>
+                    <form method=\"post\" action=\"{{ path('admin.property.delete', {id: property.id}) }}\"
+                          style=\"display: inline-block\" onsubmit=\"return confirm('Êtes-vous vraiment sûr ?')\">
+                        <input type=\"hidden\" name=\"_method\" value=\"DELETE\">
+                        <input type=\"hidden\" name=\"_token\" value=\"{{ csrf_token('delete' ~ property.id) }}\">
+                        <button class=\"btn btn-danger\">Supprimer</button>
+
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class=\"text-right\">
+        <a href=\"{{ path('admin.property.new') }}\" class=\"btn btn-primary\">Créer un nouveau bien</a>
     </div>
-{% endblock %}", "property/index.html.twig", "/Users/arthur/PhpstormProjects/tutoSymfony/agence_immo/templates/property/index.html.twig");
+    </div>
+{% endblock %}", "property/index.html.twig", "/Users/arthur/Desktop/Code/Projets/agence_immo/templates/property/index.html.twig");
     }
 }
