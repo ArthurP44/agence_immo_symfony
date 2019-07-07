@@ -80,15 +80,30 @@ class __TwigTemplate_bd2777b9ed1b8e2b97060d722e1494af7f05cfcdb15658d92df21371786
         echo "\">Acheter</a>
                     </li>
                 </ul>
-            </div>
+                ";
+        // line 21
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 21, $this->source); })()), "user", [], "any", false, false, false, 21)) {
+            // line 22
+            echo "                    <ul class=\"navbar-nav\">
+                        <li class=\"nav-item\">
+                            <a href=\"";
+            // line 24
+            echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("logout");
+            echo "\" class=\"nav-link\">Se déconnecter</a>
+                        </li>
+                    </ul>
+                ";
+        }
+        // line 28
+        echo "            </div>
         </nav>
     ";
-        // line 23
+        // line 30
         $this->displayBlock('body', $context, $blocks);
-        // line 24
+        // line 31
         echo "    ";
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 25
+        // line 32
         echo "    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>
     <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" integrity=\"sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1\" crossorigin=\"anonymous\"></script>
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>
@@ -140,7 +155,7 @@ class __TwigTemplate_bd2777b9ed1b8e2b97060d722e1494af7f05cfcdb15658d92df21371786
 
     }
 
-    // line 23
+    // line 30
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -158,7 +173,7 @@ class __TwigTemplate_bd2777b9ed1b8e2b97060d722e1494af7f05cfcdb15658d92df21371786
 
     }
 
-    // line 24
+    // line 31
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -188,7 +203,7 @@ class __TwigTemplate_bd2777b9ed1b8e2b97060d722e1494af7f05cfcdb15658d92df21371786
 
     public function getDebugInfo()
     {
-        return array (  162 => 24,  144 => 23,  126 => 7,  107 => 5,  92 => 25,  89 => 24,  87 => 23,  75 => 18,  65 => 11,  60 => 8,  58 => 7,  53 => 5,  47 => 1,);
+        return array (  177 => 31,  159 => 30,  141 => 7,  122 => 5,  107 => 32,  104 => 31,  102 => 30,  98 => 28,  91 => 24,  87 => 22,  85 => 21,  75 => 18,  65 => 11,  60 => 8,  58 => 7,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -213,6 +228,13 @@ class __TwigTemplate_bd2777b9ed1b8e2b97060d722e1494af7f05cfcdb15658d92df21371786
                         <a class=\"nav-link {% if current_menu is defined and current_menu == 'properties' %}active{% endif %}\" href=\"{{ path('property.index') }}\">Acheter</a>
                     </li>
                 </ul>
+                {% if app.user %}
+                    <ul class=\"navbar-nav\">
+                        <li class=\"nav-item\">
+                            <a href=\"{{ path('logout') }}\" class=\"nav-link\">Se déconnecter</a>
+                        </li>
+                    </ul>
+                {% endif %}
             </div>
         </nav>
     {% block body %}{% endblock %}
@@ -222,6 +244,6 @@ class __TwigTemplate_bd2777b9ed1b8e2b97060d722e1494af7f05cfcdb15658d92df21371786
     <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\" crossorigin=\"anonymous\"></script>
 </body>
 </html>
-", "base.html.twig", "/Users/arthur/PhpstormProjects/tutoSymfony/agence_immo/templates/base.html.twig");
+", "base.html.twig", "/Users/arthur/Desktop/Code/Projets/agence_immo/templates/base.html.twig");
     }
 }

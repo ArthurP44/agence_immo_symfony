@@ -35,7 +35,7 @@ class AdminPropertyController extends AbstractController
     {
         $properties = $this->repository->findAll();
         return $this->render('property/index.html.twig', [
-            'properties' => $properties
+            'properties' => $properties,
         ]);
     }
 
