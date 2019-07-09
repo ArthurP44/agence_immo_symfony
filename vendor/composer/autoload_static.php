@@ -117,6 +117,7 @@ class ComposerStaticInitb3964fb055357d0e113a1aa09c2e5a0f
         'F' => 
         array (
             'Fig\\Link\\' => 9,
+            'Faker\\' => 6,
             'Facebook\\WebDriver\\' => 19,
         ),
         'E' => 
@@ -458,6 +459,10 @@ class ComposerStaticInitb3964fb055357d0e113a1aa09c2e5a0f
         'Fig\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/link-util/src',
+        ),
+        'Faker\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
         'Facebook\\WebDriver\\' => 
         array (
