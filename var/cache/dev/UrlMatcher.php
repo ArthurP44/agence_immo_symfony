@@ -15,6 +15,8 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin.property.index', '_controller' => 'App\\Controller\\Admin\\AdminPropertyController::index'], null, null, null, false, false, null]],
         '/admin/property/create' => [[['_route' => 'admin.property.new', '_controller' => 'App\\Controller\\Admin\\AdminPropertyController::new'], null, null, null, false, false, null]],
+        '/option' => [[['_route' => 'option_index', '_controller' => 'App\\Controller\\OptionController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/option/new' => [[['_route' => 'option_new', '_controller' => 'App\\Controller\\OptionController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/biens' => [[['_route' => 'property.index', '_controller' => 'App\\Controller\\PropertyController::index'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\SecurityController::login'], null, null, null, false, false, null]],
         '/' => [[['_route' => 'home', '_controller' => 'App\\Controller\\HomeController::index'], null, null, null, false, false, null]],
@@ -40,7 +42,12 @@ return [
                 .'|/admin/property/([^/]++)(?'
                     .'|(*:196)'
                 .')'
-                .'|/biens/([a-z0-9\\-]*) \\- ([^/]++)(*:237)'
+                .'|/option/([^/]++)(?'
+                    .'|(*:224)'
+                    .'|/edit(*:237)'
+                    .'|(*:245)'
+                .')'
+                .'|/biens/([a-z0-9\\-]*) \\- ([^/]++)(*:286)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -55,7 +62,10 @@ return [
             [['_route' => 'admin.property.edit', '_controller' => 'App\\Controller\\Admin\\AdminPropertyController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, true, null],
             [['_route' => 'admin.property.delete', '_controller' => 'App\\Controller\\Admin\\AdminPropertyController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        237 => [
+        224 => [[['_route' => 'option_show', '_controller' => 'App\\Controller\\OptionController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        237 => [[['_route' => 'option_edit', '_controller' => 'App\\Controller\\OptionController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        245 => [[['_route' => 'option_delete', '_controller' => 'App\\Controller\\OptionController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
+        286 => [
             [['_route' => 'property.show', '_controller' => 'App\\Controller\\PropertyController::show'], ['slug', 'id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
