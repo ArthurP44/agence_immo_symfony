@@ -399,6 +399,13 @@
     <service id="EasyCorp\EasyLog\EasyLogHandler" class="EasyCorp\EasyLog\EasyLogHandler" public="false">
       <argument>/Users/arthur/Desktop/Code/Projets/agence_immo/var/log/dev.log</argument>
     </service>
+    <service id="App\Controller\Admin\AdminOptionController" class="App\Controller\Admin\AdminOptionController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CDOTD6..App\Controller\Admin\AdminOptionController"/>
+      </call>
+    </service>
     <service id="App\Controller\Admin\AdminPropertyController" class="App\Controller\Admin\AdminPropertyController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -413,13 +420,6 @@
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.CDOTD6..App\Controller\HomeController"/>
-      </call>
-    </service>
-    <service id="App\Controller\OptionController" class="App\Controller\OptionController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.CDOTD6..App\Controller\OptionController"/>
       </call>
     </service>
     <service id="App\Controller\PropertyController" class="App\Controller\PropertyController" public="true" autowire="true" autoconfigure="true">
@@ -4818,15 +4818,15 @@
       <tag name="twig.extension"/>
       <argument type="service" id="knp_paginator.helper.processor"/>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\AdminOptionController" class="App\Controller\Admin\AdminOptionController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\AdminOptionController" class="App\Controller\Admin\AdminOptionController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\Admin\AdminOptionController" class="App\Controller\Admin\AdminOptionController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\Admin\AdminPropertyController" class="App\Controller\Admin\AdminPropertyController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\Admin\AdminPropertyController" class="App\Controller\Admin\AdminPropertyController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\Admin\AdminPropertyController" class="App\Controller\Admin\AdminPropertyController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\OptionController" class="App\Controller\OptionController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\OptionController" class="App\Controller\OptionController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\OptionController" class="App\Controller\OptionController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PropertyController" class="App\Controller\PropertyController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PropertyController" class="App\Controller\PropertyController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\PropertyController" class="App\Controller\PropertyController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5013,18 +5013,6 @@
         <argument>make:migration</argument>
       </call>
     </service>
-    <service id=".service_locator.N38ovWA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="property" type="service" id=".errored..service_locator.N38ovWA.App\Entity\Property"/>
-      </argument>
-    </service>
-    <service id=".service_locator.zf96HF0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator"/>
-      <argument type="collection">
-        <argument key="repository" type="service" id="App\Repository\PropertyRepository"/>
-      </argument>
-    </service>
     <service id=".service_locator.WStrAY3" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5035,6 +5023,18 @@
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="option" type="service" id=".errored..service_locator.rq32Uw1.App\Entity\Option"/>
+      </argument>
+    </service>
+    <service id=".service_locator.N38ovWA" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="property" type="service" id=".errored..service_locator.N38ovWA.App\Entity\Property"/>
+      </argument>
+    </service>
+    <service id=".service_locator.zf96HF0" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repository" type="service" id="App\Repository\PropertyRepository"/>
       </argument>
     </service>
     <service id=".service_locator.jVNF2GQ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5049,26 +5049,24 @@
         <argument key="authenticationUtils" type="service" id="security.authentication_utils"/>
       </argument>
     </service>
-    <service id=".service_locator.3FrPM9v" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.O_e9KZE" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\Admin\AdminOptionController::delete" type="service" id=".service_locator.rq32Uw1"/>
+        <argument key="App\Controller\Admin\AdminOptionController::edit" type="service" id=".service_locator.rq32Uw1"/>
+        <argument key="App\Controller\Admin\AdminOptionController::index" type="service" id=".service_locator.WStrAY3"/>
         <argument key="App\Controller\Admin\AdminPropertyController::delete" type="service" id=".service_locator.N38ovWA"/>
         <argument key="App\Controller\Admin\AdminPropertyController::edit" type="service" id=".service_locator.N38ovWA"/>
         <argument key="App\Controller\HomeController::index" type="service" id=".service_locator.zf96HF0"/>
-        <argument key="App\Controller\OptionController::delete" type="service" id=".service_locator.rq32Uw1"/>
-        <argument key="App\Controller\OptionController::edit" type="service" id=".service_locator.rq32Uw1"/>
-        <argument key="App\Controller\OptionController::index" type="service" id=".service_locator.WStrAY3"/>
-        <argument key="App\Controller\OptionController::show" type="service" id=".service_locator.rq32Uw1"/>
         <argument key="App\Controller\PropertyController::index" type="service" id=".service_locator.jVNF2GQ"/>
         <argument key="App\Controller\PropertyController::show" type="service" id=".service_locator.N38ovWA"/>
         <argument key="App\Controller\SecurityController::login" type="service" id=".service_locator.EbLunuf"/>
+        <argument key="App\Controller\Admin\AdminOptionController:delete" type="service" id=".service_locator.rq32Uw1"/>
+        <argument key="App\Controller\Admin\AdminOptionController:edit" type="service" id=".service_locator.rq32Uw1"/>
+        <argument key="App\Controller\Admin\AdminOptionController:index" type="service" id=".service_locator.WStrAY3"/>
         <argument key="App\Controller\Admin\AdminPropertyController:delete" type="service" id=".service_locator.N38ovWA"/>
         <argument key="App\Controller\Admin\AdminPropertyController:edit" type="service" id=".service_locator.N38ovWA"/>
         <argument key="App\Controller\HomeController:index" type="service" id=".service_locator.zf96HF0"/>
-        <argument key="App\Controller\OptionController:delete" type="service" id=".service_locator.rq32Uw1"/>
-        <argument key="App\Controller\OptionController:edit" type="service" id=".service_locator.rq32Uw1"/>
-        <argument key="App\Controller\OptionController:index" type="service" id=".service_locator.WStrAY3"/>
-        <argument key="App\Controller\OptionController:show" type="service" id=".service_locator.rq32Uw1"/>
         <argument key="App\Controller\PropertyController:index" type="service" id=".service_locator.jVNF2GQ"/>
         <argument key="App\Controller\PropertyController:show" type="service" id=".service_locator.N38ovWA"/>
         <argument key="App\Controller\SecurityController:login" type="service" id=".service_locator.EbLunuf"/>
@@ -5376,6 +5374,12 @@
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.CDOTD6..App\Controller\Admin\AdminOptionController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\Admin\AdminOptionController"/>
+      <argument>App\Controller\Admin\AdminOptionController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CDOTD6." method="withContext"/>
+    </service>
     <service id=".service_locator.CDOTD6..App\Controller\Admin\AdminPropertyController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\Admin\AdminPropertyController"/>
       <argument>App\Controller\Admin\AdminPropertyController</argument>
@@ -5385,12 +5389,6 @@
     <service id=".service_locator.CDOTD6..App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\HomeController"/>
       <argument>App\Controller\HomeController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.CDOTD6." method="withContext"/>
-    </service>
-    <service id=".service_locator.CDOTD6..App\Controller\OptionController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
-      <tag name="container.service_locator_context" id="App\Controller\OptionController"/>
-      <argument>App\Controller\OptionController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CDOTD6." method="withContext"/>
     </service>
@@ -5499,15 +5497,15 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.3FrPM9v"/>
+      <argument type="service" id=".service_locator.O_e9KZE"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.3FrPM9v"/>
+      <argument type="service" id=".service_locator.O_e9KZE"/>
     </service>
-    <service id=".errored..service_locator.N38ovWA.App\Entity\Property" class="App\Entity\Property"/>
     <service id=".errored..service_locator.rq32Uw1.App\Entity\Option" class="App\Entity\Option"/>
+    <service id=".errored..service_locator.N38ovWA.App\Entity\Property" class="App\Entity\Property"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.JgKnBZT"/>
       <argument type="collection">
@@ -5861,7 +5859,7 @@
     <service id="logger" alias="monolog.logger"/>
     <service id="Psr\Log\LoggerInterface" alias="monolog.logger" public="false"/>
     <service id="Knp\Component\Pager\PaginatorInterface" alias="knp_paginator"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.3FrPM9v"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.O_e9KZE"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="validator" alias="debug.validator" public="true"/>
